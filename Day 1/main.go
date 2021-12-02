@@ -3,21 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 
 	"github.com/stephenhoran/aocutils"
 )
-
-const inputFile string = "input.txt"
-
-func input() []byte {
-	file, err := ioutil.ReadFile(inputFile)
-	if err != nil {
-		panic(err)
-	}
-
-	return file
-}
 
 func Day1(numbers []int) {
 	var count, previousValue int
@@ -67,14 +55,14 @@ func slidingWindowSum(numbers []int, index int) int {
 }
 
 func main() {
-	input := input()
+	input := aocutils.InputToSliceInt()
 	day := flag.Int("day", 1, "Which Day to Run")
 	flag.Parse()
 
 	switch *day {
 	case 1:
-		Day1(aocutils.ToSliceInt(input))
+		Day1(input)
 	case 2:
-		Day2(aocutils.ToSliceInt(input))
+		Day2(input)
 	}
 }
